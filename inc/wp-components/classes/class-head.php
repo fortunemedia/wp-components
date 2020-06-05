@@ -373,7 +373,7 @@ class Head extends Component {
 			return $social_title;
 		}
 
-		return $this->get_meta_title();
+		return $this->wp_post_get_title();
 	}
 
 
