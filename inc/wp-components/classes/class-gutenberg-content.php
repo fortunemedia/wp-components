@@ -121,6 +121,13 @@ class Gutenberg_Content extends Component {
 			return $blocks;
 		}
 
+		$to_component = apply_filters( "gutenberg_content_{$block["blockName"]}", false, $block );
+
+		if ( $to_component instanceof Component ) {
+			$blocks[] = $to_component;
+			return $blocks;
+		}
+
 		// The presence of html means this is a non-dynamic block.
 		if (
 			! empty( trim( $block['innerHTML'] ) )
