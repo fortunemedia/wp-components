@@ -279,11 +279,33 @@ class Head extends Component {
 	public function set_open_graph_meta() {
 
 		// Define values that are used multiple times.
-		$description  = $this->get_social_description();
-		$image_source = $this->get_image_source();
-		$image_url    = '';
-		$permalink    = $this->wp_post_get_permalink();
-		$title        = $this->get_social_title();
+		$description = apply_filters(
+			'wp_components_open_graph_description',
+			$this->get_social_description(),
+			$this->post,
+			$this->query
+		);
+
+		$image_source = apply_filters(
+			'wp_components_open_graph_image',
+			$this->get_image_source(),
+			$this->post,
+			$this->query
+		);
+
+		$title = apply_filters(
+			'wp_components_open_graph_title',
+			$this->get_social_title(),
+			$this->post,
+			$this->query
+		);
+
+		$permalink = apply_filters(
+			'wp_components_open_graph_url',
+			$this->wp_post_get_permalink(),
+			$this->post,
+			$this->query
+		);
 
 		// Open graph meta.
 		$this->add_meta( 'og:url', $permalink );
