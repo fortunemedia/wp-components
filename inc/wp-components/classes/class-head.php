@@ -434,7 +434,7 @@ class Head extends Component {
 		$image_source    = wp_get_attachment_image_src( $image_id, 'full' );
 
 		// Fallback to featured image.
-		if ( empty( $image ) ) {
+		if ( empty( $image_source ) ) {
 			$image_source = wp_get_attachment_image_src( get_post_thumbnail_id( $this->post->ID ), 'full' );
 		}
 
