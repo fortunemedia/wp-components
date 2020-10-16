@@ -293,7 +293,7 @@ class Image extends Component {
 		$this->merge_config(
 			[
 				'alt'         => $this->get_alt_text(),
-				'caption'     => ! empty( $this->config['attachment_id'] ) ? wp_get_attachment_caption( $this->config['attachment_id'] ) : '',
+				'caption'     => ! empty( $this->config['attachment_id'] ) ? get_post( $this->config['attachment_id'] )->post_content : '',
 				'height'      => $image_meta['height'] ?? 0,
 				'lqip_src'    => $this->get_lqip_src(),
 				'url'         => $this->get_config( 'url' ),
